@@ -1,0 +1,34 @@
+\label{index_mainpage}%
+\Hypertarget{index_mainpage}%
+ \hypertarget{index_autotoc_md0}{}\doxysection{REZUMAT}\label{index_autotoc_md0}
+\mbox{[}cite\+\_\+start\mbox{]}Proiectul de față reprezintă o soluție hibridă alcătuită dintr-\/un motor nativ performant dezvoltat în limbajul C și un panou modern de administrare bazat pe un server web Flask (Python) și o interfață HTML statică\mbox{[}cite\+: 81, 85\mbox{]}. \mbox{[}cite\+\_\+start\mbox{]}Scopul principal este transformarea unei mașini Linux Ubuntu într-\/un nod activ de rețea (router/firewall) capabil să asigure funcții de bază în infrastructurile locale LAN/\+WAN, oferind totodată vizualizare în timp real a pachetelor de rețea de tip ICMP și TCP.
+
+\DoxyHorRuler{0}
+\hypertarget{index_autotoc_md2}{}\doxysection{1. Introducere -\/ Cadrul General}\label{index_autotoc_md2}
+\hypertarget{index_autotoc_md3}{}\doxysubsection{Motivația alegerii temei}\label{index_autotoc_md3}
+Administrarea rețelelor prin linie de comandă cu {\ttfamily iptables} poate fi greoaie și predispusă la erori umane. \mbox{[}cite\+\_\+start\mbox{]}Această lucrare abordează simplificarea procesului prin abstractizarea comenzilor critice sub o interfață web intuitivă, utilă administratorilor de sistem.\hypertarget{index_autotoc_md4}{}\doxysubsection{Obiectivele generale ale lucrării}\label{index_autotoc_md4}
+
+\begin{DoxyItemize}
+\item \mbox{[}cite\+\_\+start\mbox{]}$\ast$$\ast$\+Captura de nivel scăzut\+:$\ast$$\ast$ Inspectarea headerelor pachetelor IP direct din interfața LAN prin socket-\/uri raw utilizând {\ttfamily libpcap}.
+\item \mbox{[}cite\+\_\+start\mbox{]}$\ast$$\ast$\+Control Securizat\+:$\ast$$\ast$ Controlul dinamic și curățarea regulilor de rutare NAT/\+Masquerade din kernel-\/ul Linux.
+\item \mbox{[}cite\+\_\+start\mbox{]}$\ast$$\ast$\+Interfață Responsivă\+:$\ast$$\ast$ Afișarea fluidă asincronă a fluxului de date prin tehnologii moderne Web.
+\end{DoxyItemize}
+
+\DoxyHorRuler{0}
+\hypertarget{index_autotoc_md6}{}\doxysection{2. Structura Tehnică și Capitolele Lucrării}\label{index_autotoc_md6}
+\mbox{[}cite\+\_\+start\mbox{]}Proiectul este modularizat în trei straturi distincte, reflectate direct în fișierele atașate\+:
+\begin{DoxyEnumerate}
+\item $\ast$$\ast${\ttfamily \mbox{\hyperlink{main_8c}{main.\+c}}} (Motorul de Captură)\+:$\ast$$\ast$ Scris în C pentru viteză, manipulează pachetele direct din buffer-\/ul plăcii de rețea.
+\item $\ast$$\ast${\ttfamily \mbox{\hyperlink{app_8py}{app.\+py}}} (Backend-\/ul Flask)\+:$\ast$$\ast$ Orchestrează execuția comenzilor de sistem și servește API-\/ul REST către utilizator.
+\item $\ast$$\ast${\ttfamily \mbox{\hyperlink{index_8html}{index.\+html}}} (Interfața de Utilizator)\+:$\ast$$\ast$ Construită pentru monitorizare live fără a reîncărca pagina, folosind apeluri AJAX repetitive la interval de 2 secunde.
+\end{DoxyEnumerate}
+
+\DoxyHorRuler{0}
+\hypertarget{index_autotoc_md8}{}\doxysection{3. Concluzii și Direcții Viitoare}\label{index_autotoc_md8}
+Aplicația demonstrează funcționalitatea cu succes a unui sistem de rutare controlat software (SDN) la scară mică. \mbox{[}cite\+\_\+start\mbox{]}Ca direcții viitoare, se urmărește adăugarea suportului pentru detecția atacurilor de tip DOS (Denial of Service) direct în parserul C și stocarea istoricului de trafic într-\/o bază de date SQL în loc de fișiere simple {\ttfamily .log}.
+
+\DoxyHorRuler{0}
+\hypertarget{index_autotoc_md10}{}\doxysection{DECLARAȚ\+IE DE AUTENTICITATE}\label{index_autotoc_md10}
+\mbox{[}cite\+\_\+start\mbox{]}Subsemnatul, autor al lucrării elaborate în vederea susținerii examenului de finalizare a studiilor organizat de către Universitatea Politehnica Timișoara, sesiunea Iunie 2026, declar pe proprie răspundere că această lucrare este rezultatul propriei activități intelectuale, iar sursele bibliografice au fost folosite cu respectarea legislației române și a convențiilor internaționale privind drepturile de autor.
+
+Timișoara, Mai 2026 

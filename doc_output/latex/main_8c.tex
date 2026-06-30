@@ -1,0 +1,118 @@
+\hypertarget{main_8c}{}\doxysection{Referinţă la fişierul main.\+c}
+\label{main_8c}\index{main.c@{main.c}}
+
+
+Motorul de captură și logare a traficului de rețea (ICMP/\+TCP).  
+
+
+{\ttfamily \#include $<$pcap.\+h$>$}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include $<$time.\+h$>$}\newline
+{\ttfamily \#include $<$netinet/ip.\+h$>$}\newline
+{\ttfamily \#include $<$netinet/ip\+\_\+icmp.\+h$>$}\newline
+{\ttfamily \#include $<$netinet/tcp.\+h$>$}\newline
+{\ttfamily \#include $<$netinet/if\+\_\+ether.\+h$>$}\newline
+{\ttfamily \#include $<$arpa/inet.\+h$>$}\newline
+Graful dependenţelor prin incluziune pentru main.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{main_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Definiţii}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{main_8c_a69d4676733f5e850f451942b6d901382}{LOG\+\_\+\+FILE}}~\char`\"{}traffic.\+log\char`\"{}
+\begin{DoxyCompactList}\small\item\em Numele fișierului în care se vor salva înregistrările de trafic. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Funcţii}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{main_8c_a8f92eac9973678a42f6e06370c99f6ee}{packet\+\_\+handler}} (u\+\_\+char $\ast$args, const struct pcap\+\_\+pkthdr $\ast$header, const u\+\_\+char $\ast$packet)
+\begin{DoxyCompactList}\small\item\em Callback apelat de pcap\+\_\+loop pentru fiecare pachet capturat din rețea. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{main_8c_ae66f6b31b5ad750f1fe042a706a4e3d4}{main}} ()
+\begin{DoxyCompactList}\small\item\em Funcția principală (Punctul de intrare în motorul de captură). \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Descriere Detaliată}
+Motorul de captură și logare a traficului de rețea (ICMP/\+TCP). 
+
+Acest modul utilizează biblioteca libpcap pentru a monitoriza interfața LAN, extrage adresele IP sursă și destinație, analizează protocoalele de rețea și salvează traficul aliniat în fișierul de loguri. 
+
+\doxysubsection{Documentaţia definiţiilor}
+\mbox{\Hypertarget{main_8c_a69d4676733f5e850f451942b6d901382}\label{main_8c_a69d4676733f5e850f451942b6d901382}} 
+\index{main.c@{main.c}!LOG\_FILE@{LOG\_FILE}}
+\index{LOG\_FILE@{LOG\_FILE}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{LOG\_FILE}{LOG\_FILE}}
+{\footnotesize\ttfamily \#define LOG\+\_\+\+FILE~\char`\"{}traffic.\+log\char`\"{}}
+
+
+
+Numele fișierului în care se vor salva înregistrările de trafic. 
+
+
+\begin{DoxyItemize}
+\item 
+\end{DoxyItemize}
+
+\doxysubsection{Documentaţia funcţiilor}
+\mbox{\Hypertarget{main_8c_ae66f6b31b5ad750f1fe042a706a4e3d4}\label{main_8c_ae66f6b31b5ad750f1fe042a706a4e3d4}} 
+\index{main.c@{main.c}!main@{main}}
+\index{main@{main}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Funcția principală (Punctul de intrare în motorul de captură). 
+
+
+\begin{DoxyItemize}
+\item Inițializează interfața de rețea locală \char`\"{}enp0s8\char`\"{} în mod promiscuu, resetează fișierul de loguri și pornește bucla infinită de captură prin pcap\+\_\+loop.
+\item \begin{DoxyReturn}{Întoarce}
+0 la oprirea cu succes a execuției, 2 în cazul în care interfața pcap nu poate fi deschisă. 
+\end{DoxyReturn}
+
+\end{DoxyItemize}Graful de apel al acestei funcţii\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=248pt]{main_8c_ae66f6b31b5ad750f1fe042a706a4e3d4_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{main_8c_a8f92eac9973678a42f6e06370c99f6ee}\label{main_8c_a8f92eac9973678a42f6e06370c99f6ee}} 
+\index{main.c@{main.c}!packet\_handler@{packet\_handler}}
+\index{packet\_handler@{packet\_handler}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{packet\_handler()}{packet\_handler()}}
+{\footnotesize\ttfamily void packet\+\_\+handler (\begin{DoxyParamCaption}\item[{u\+\_\+char $\ast$}]{args,  }\item[{const struct pcap\+\_\+pkthdr $\ast$}]{header,  }\item[{const u\+\_\+char $\ast$}]{packet }\end{DoxyParamCaption})}
+
+
+
+Callback apelat de pcap\+\_\+loop pentru fiecare pachet capturat din rețea. 
+
+
+\begin{DoxyItemize}
+\item Funcția decodează pachetul de la nivelul Ethernet (Data Link) până la nivelul Network (IP) și Transport (TCP/\+ICMP). Filtrează cererile și răspunsurile ICMP, precum și pachetele TCP de control (SYN/\+PSH), scriind rezultatul formatat în LOG\+\_\+\+FILE.
+\end{DoxyItemize}
+
+
+\begin{DoxyParams}{Parametri}
+{\em args} & Argumente suplimentare transmise de utilizator (neutilizat în acest caz). \\
+\hline
+{\em header} & Structură ce conține metadatele pachetului oferite de pcap (timestamp, lungime). \\
+\hline
+{\em packet} & Pointer către conținutul brut (băituții) pachetului capturat. \\
+\hline
+\end{DoxyParams}
+Graful de apeluri pentru această funcţie\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=248pt]{main_8c_a8f92eac9973678a42f6e06370c99f6ee_icgraph}
+\end{center}
+\end{figure}

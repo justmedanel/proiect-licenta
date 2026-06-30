@@ -1,0 +1,111 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Virtual Router Dashboard UPT: Panou Web de Management pentru un Router Virtual Custom</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="upt_style.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Virtual Router Dashboard UPT
+   &#160;<span id="projectnumber">Sesiunea Iunie 2026</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generat de Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Caută','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Caută');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="PageDoc"><div class="header">
+  <div class="headertitle">
+<div class="title">Panou Web de Management pentru un Router Virtual Custom </div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><p><a class="anchor" id="mainpage"></a> </p>
+<h1><a class="anchor" id="autotoc_md0"></a>
+REZUMAT</h1>
+<p>[cite_start]Proiectul de față reprezintă o soluție hibridă alcătuită dintr-un motor nativ performant dezvoltat în limbajul C și un panou modern de administrare bazat pe un server web Flask (Python) și o interfață HTML statică[cite: 81, 85]. [cite_start]Scopul principal este transformarea unei mașini Linux Ubuntu într-un nod activ de rețea (router/firewall) capabil să asigure funcții de bază în infrastructurile locale LAN/WAN, oferind totodată vizualizare în timp real a pachetelor de rețea de tip ICMP și TCP.</p>
+<hr  />
+<h1><a class="anchor" id="autotoc_md2"></a>
+1. Introducere - Cadrul General</h1>
+<h2><a class="anchor" id="autotoc_md3"></a>
+Motivația alegerii temei</h2>
+<p>Administrarea rețelelor prin linie de comandă cu <code>iptables</code> poate fi greoaie și predispusă la erori umane. [cite_start]Această lucrare abordează simplificarea procesului prin abstractizarea comenzilor critice sub o interfață web intuitivă, utilă administratorilor de sistem.</p>
+<h2><a class="anchor" id="autotoc_md4"></a>
+Obiectivele generale ale lucrării</h2>
+<ul>
+<li>[cite_start]**Captura de nivel scăzut:** Inspectarea headerelor pachetelor IP direct din interfața LAN prin socket-uri raw utilizând <code>libpcap</code>.</li>
+<li>[cite_start]**Control Securizat:** Controlul dinamic și curățarea regulilor de rutare NAT/Masquerade din kernel-ul Linux.</li>
+<li>[cite_start]**Interfață Responsivă:** Afișarea fluidă asincronă a fluxului de date prin tehnologii moderne Web.</li>
+</ul>
+<hr  />
+<h1><a class="anchor" id="autotoc_md6"></a>
+2. Structura Tehnică și Capitolele Lucrării</h1>
+<p>[cite_start]Proiectul este modularizat în trei straturi distincte, reflectate direct în fișierele atașate:</p><ol type="1">
+<li>**<code><a class="el" href="main_8c.html" title="Motorul de captură și logare a traficului de rețea (ICMP/TCP).">main.c</a></code> (Motorul de Captură):** Scris în C pentru viteză, manipulează pachetele direct din buffer-ul plăcii de rețea.</li>
+<li>**<code><a class="el" href="app_8py.html" title="Server API Flask pentru panoul de control și management al routerului virtual.">app.py</a></code> (Backend-ul Flask):** Orchestrează execuția comenzilor de sistem și servește API-ul REST către utilizator.</li>
+<li>**<code><a class="el" href="index_8html.html">index.html</a></code> (Interfața de Utilizator):** Construită pentru monitorizare live fără a reîncărca pagina, folosind apeluri AJAX repetitive la interval de 2 secunde.</li>
+</ol>
+<hr  />
+<h1><a class="anchor" id="autotoc_md8"></a>
+3. Concluzii și Direcții Viitoare</h1>
+<p>Aplicația demonstrează funcționalitatea cu succes a unui sistem de rutare controlat software (SDN) la scară mică. [cite_start]Ca direcții viitoare, se urmărește adăugarea suportului pentru detecția atacurilor de tip DOS (Denial of Service) direct în parserul C și stocarea istoricului de trafic într-o bază de date SQL în loc de fișiere simple <code>.log</code>.</p>
+<hr  />
+<h1><a class="anchor" id="autotoc_md10"></a>
+DECLARAȚIE DE AUTENTICITATE</h1>
+<p>[cite_start]Subsemnatul, autor al lucrării elaborate în vederea susținerii examenului de finalizare a studiilor organizat de către Universitatea Politehnica Timișoara, sesiunea Iunie 2026, declar pe proprie răspundere că această lucrare este rezultatul propriei activități intelectuale, iar sursele bibliografice au fost folosite cu respectarea legislației române și a convențiilor internaționale privind drepturile de autor.</p>
+<p>Timișoara, Mai 2026 </p>
+</div></div><!-- PageDoc -->
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Generat de&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1
+</small></address>
+</body>
+</html>

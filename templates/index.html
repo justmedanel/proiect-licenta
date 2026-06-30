@@ -31,16 +31,24 @@
         </div>
 
         <div class="section">
-            <h3>LIVE NETWORK TRAFFIC (ICMP/TCP)</h3>
-            <div id="traffic" class="log-box">Initializing monitoring...</div>
-        </div>
-
-        <div class="section">
             <h3>FIREWALL</h3>
             <input type="text" id="targetIp" placeholder="Target IP (e.g. 192.168.10.2)">
             <button onclick="firewall('block')">BLOCK IP</button>
             <button onclick="firewall('unblock')">UNBLOCK IP</button>
         </div>
+
+        <div class="section">
+            <h3>QUALITY OF SERVICE (QoS - BANDWIDTH LIMIT)</h3>
+            <input type="text" id="qosIp" placeholder="Target IP (e.g. 192.168.10.2)">
+            <button onclick="qos('limit')">LIMIT VITEZĂ (5 Mbps)</button>
+            <button onclick="qos('unlimit')">ELIMINĂ LIMITARE</button>
+        </div>
+
+        <div class="section">
+            <h3>LIVE NETWORK TRAFFIC (ICMP/TCP)</h3>
+            <div id="traffic" class="log-box">Initializing monitoring...</div>
+        </div>
+
     </div>
 
     <script>
@@ -55,6 +63,11 @@
         function firewall(action) {
             let ip = document.getElementById('targetIp').value;
             api('/api/firewall', {ip: ip, action: action});
+        }
+        function qos(action) {
+            let ip = document.getElementById('qosIp').value;
+            // Trimite IP-ul și acțiunea ('limit' sau 'unlimit') exact cum cere backend-ul tău în Python
+            api('/api/qos', {ip: ip, action: action});
         }
 
         setInterval(() => {

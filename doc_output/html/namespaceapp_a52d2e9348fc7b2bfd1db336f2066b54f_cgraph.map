@@ -1,0 +1,4 @@
+<map id="app.system_control" name="app.system_control">
+<area shape="rect" id="node1" title="Controlează starea generală a rutării în sistem." alt="" coords="5,5,156,32"/>
+<area shape="rect" id="node2" href="$namespaceapp.html#ab339efcc935aba677321142c27371d32" title="Execută o comandă în terminalul Linux de pe Mașina Virtuală și returnează output&#45;ul standard." alt="" coords="204,5,311,32"/>
+</map>

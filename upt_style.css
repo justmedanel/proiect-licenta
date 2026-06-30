@@ -1,0 +1,36 @@
+/* Forțare reguli vizuale conform ghidului oficial UPT */
+body, table, div, p, dl, .memdoc, .description {
+    font-family: Arial, Helvetica, sans-serif !important;
+    font-size: 16px !important; /* 16px reprezintă echivalentul optic a 12pt */
+    line-height: 1.15 !important; /* Spațiere de 1.15 linii */
+    color: #000000 !important; /* Text strict negru pe fundal alb */
+    background-color: #ffffff !important;
+}
+
+/* Alinierea textului standard de tip JUSTIFY */
+p, .memdoc, .description {
+    text-align: justify !important;
+    text-justify: inter-word !important;
+}
+
+/* Indentarea primului rând din paragrafe cu 1.5 cm */
+p {
+    text-indent: 1.5cm !important;
+    margin-bottom: 12px !important;
+}
+
+/* Titlurile capitolelor și secțiunilor - Aliniate la stânga și Bold */
+h1, h2, h3, h4, .memtitle {
+    text-align: left !important;
+    text-indent: 0 !important;
+    font-weight: bold !important;
+    color: #000000 !important;
+    margin-top: 24px !important;
+    margin-bottom: 12px !important;
+}
+
+/* Centrarea imaginilor și tabelelor */
+.directory, table.memberdecls, img {
+    margin: 0 auto !important;
+    float: none !important;
+}

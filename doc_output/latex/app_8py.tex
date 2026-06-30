@@ -1,0 +1,48 @@
+\hypertarget{app_8py}{}\doxysection{Referinţă la fişierul app.\+py}
+\label{app_8py}\index{app.py@{app.py}}
+
+
+Server API Flask pentru panoul de control și management al routerului virtual.  
+
+
+\doxysubsection*{Namespace-\/uri}
+\begin{DoxyCompactItemize}
+\item 
+ \mbox{\hyperlink{namespaceapp}{app}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Funcţii}
+\begin{DoxyCompactItemize}
+\item 
+def \mbox{\hyperlink{namespaceapp_ab339efcc935aba677321142c27371d32}{app.\+run\+\_\+cmd}} (cmd)
+\begin{DoxyCompactList}\small\item\em Execută o comandă în terminalul Linux de pe Mașina Virtuală și returnează output-\/ul standard. \end{DoxyCompactList}\item 
+def \mbox{\hyperlink{namespaceapp_a562146490ce954c1708a2f4a31e768e3}{app.\+index}} ()
+\begin{DoxyCompactList}\small\item\em Randează interfața principală Dashboard. \end{DoxyCompactList}\item 
+def \mbox{\hyperlink{namespaceapp_a061bac7b405b08b65615e4865f27d54b}{app.\+get\+\_\+stats}} ()
+\begin{DoxyCompactList}\small\item\em Extrage ultimele 15 linii din traffic.\+log pentru a le trimite live către interfața web. \end{DoxyCompactList}\item 
+def \mbox{\hyperlink{namespaceapp_a52d2e9348fc7b2bfd1db336f2066b54f}{app.\+system\+\_\+control}} ()
+\begin{DoxyCompactList}\small\item\em Controlează starea generală a rutării în sistem. \end{DoxyCompactList}\item 
+def \mbox{\hyperlink{namespaceapp_a203ec1128103dba0a003ab6b63108c1e}{app.\+firewall\+\_\+control}} ()
+\begin{DoxyCompactList}\small\item\em Gestionează politicile de securitate (Firewall) pentru blocarea sau deblocarea unui IP țintă. \end{DoxyCompactList}\item 
+def \mbox{\hyperlink{namespaceapp_ab33079b4c0e16911914825b8dca88117}{app.\+forward\+\_\+control}} ()
+\begin{DoxyCompactList}\small\item\em Activează sau dezactivează maparea statică de porturi (DNAT -\/ Port Forwarding). \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variabile}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{namespaceapp_a675b4ea702c13dc4b8c05f985a25b496}{app.\+app}} = Flask(\+\_\+\+\_\+name\+\_\+\+\_\+)
+\item 
+string \mbox{\hyperlink{namespaceapp_a295f5d1fe69a4668086f1f9c20a43afd}{app.\+WAN}} = \char`\"{}enp0s3\char`\"{}
+\begin{DoxyCompactList}\small\item\em Numele interfeței WAN conectată la Internet externo. \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{namespaceapp_ad0090f0055848ec08b2ba718f5124695}{app.\+LAN}} = \char`\"{}enp0s8\char`\"{}
+\begin{DoxyCompactList}\small\item\em Numele interfeței LAN conectată la rețeaua internă locală. \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{namespaceapp_aaf0683501e86ee685fd1515fcc275631}{app.\+LOG\+\_\+\+FILE}} = \char`\"{}traffic.\+log\char`\"{}
+\begin{DoxyCompactList}\small\item\em Calea către fișierul de loguri partajat cu motorul C. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{namespaceapp_a7fa7c11c7474c128736b1d34b15a0d5e}{app.\+host}}
+\item 
+\mbox{\hyperlink{namespaceapp_ae996542be63ac459a38531f7c2dd0a49}{app.\+port}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Descriere Detaliată}
+Server API Flask pentru panoul de control și management al routerului virtual. 
+
+Acest script expune endpoint-\/uri web destinate activării funcției de IP Forwarding, manipulării regulilor iptables pentru Firewall și Port Forwarding, precum și citirii logurilor generate de motorul din C. 

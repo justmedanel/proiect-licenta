@@ -4,8 +4,11 @@ import os
 
 app = Flask(__name__)
 
+##Interfata WAN-Internet
 WAN = "enp0s3"
+##Interfata LAN-Local
 LAN = "enp0s8"
+##Fisier Log-uri creat de C
 LOG_FILE = "traffic.log"
 
 def run_cmd(cmd):
@@ -13,6 +16,7 @@ def run_cmd(cmd):
 
 @app.route('/')
 def index():
+
     return render_template('index.html')
 
 @app.route('/api/stats')
@@ -41,6 +45,9 @@ def system_control():
 
 @app.route('/api/firewall', methods=['POST'])
 def firewall_control():
+    """! Gestionează politicile de securitate (Firewall) pentru blocarea sau deblocarea unui IP țintă.
+    @return Mesaj JSON care confirmă dacă IP-ul a fost inserat sau șters din tabelul FORWARD din iptables.
+    """
     ip = request.json.get('ip')
     action = request.json.get('action')
     if action == 'block':
@@ -52,8 +59,12 @@ def firewall_control():
 
 @app.route('/api/forward', methods=['POST'])
 def forward_control():
+    """! Activează sau dezactivează maparea statică de porturi (DNAT - Port Forwarding).
+    
+    Redirecționează portul extern public 8080 de pe interfața WAN către portul 80 intern al clientului 192.168.10.2.
+    @return Mesaj JSON explicativ cu starea curentă a regulii de Port Forwarding.
+    """
     action = request.json.get('action')
-    # Regula DNAT: Redirecționare port 8080 (Router) către port 80 (Client)
     rule = f"sudo iptables -t nat -A PREROUTING -i {WAN} -p tcp --dport 8080 -j DNAT --to-destination 192.168.10.2:80"
     
     if action == 'enable':
@@ -61,8 +72,31 @@ def forward_control():
         run_cmd("sudo iptables -A FORWARD -p tcp -d 192.168.10.2 --dport 80 -j ACCEPT")
         return jsonify({"msg": "Port Forwarding ACTIVAT (8080 -> 10.2:80)"})
     else:
-        run_cmd("sudo iptables -t nat -F") # Resetare NAT
+        run_cmd("sudo iptables -t nat -F")
         return jsonify({"msg": "Port Forwarding DEZACTIVAT"})
+
+@app.route('/api/qos', methods=['POST'])
+def qos_control():
+    """! Controlează lățimea de bandă (QoS) pe interfața LAN pentru un IP specificat.
+    @return Mesaj JSON de confirmare a aplicării sau eliminării limitării de trafic.
+    ```"""
+    ip = request.json.get('ip')
+    action = request.json.get('action')
+    
+    if action == 'limit':
+        # Resetăm eventualele configurări vechi de tc de pe interfața LAN (enp0s8)
+        run_cmd("sudo tc qdisc del dev enp0s8 root 2>/dev/null")
+        # Inițializăm o disciplină de coadă de tip HTB (Hierarchical Token Bucket)
+        run_cmd("sudo tc qdisc add dev enp0s8 root handle 1: htb default 10")
+        # Definim clasa principală limitată la o rată fixă de 5 Mbps
+        run_cmd("sudo tc class add dev enp0s8 parent 1: classid 1:10 htb rate 5mbit ceil 5mbit")
+        # Aplicăm filtrul u32 pentru a potrivi pachetele care pleacă spre IP-ul destinație din LAN
+        run_cmd(f"sudo tc filter add dev enp0s8 parent 1: protocol ip prio 1 u32 match ip dst {ip} flowid 1:10")
+        return jsonify({"msg": f"Lățime de bandă limitată la 5 Mbps pentru IP-ul {ip}!"})
+    else:
+        # Eliminăm disciplina de coadă și redăm banda maximă interfeței
+        run_cmd("sudo tc qdisc del dev enp0s8 root")
+        return jsonify({"msg": f"Limitarea de viteză pentru {ip} a fost eliminată."})
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)
