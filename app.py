@@ -4,11 +4,11 @@ import os
 
 app = Flask(__name__)
 
-##Interfata WAN-Internet
+##WAN-Internet
 WAN = "enp0s3"
-##Interfata LAN-Local
+##LAN-Local
 LAN = "enp0s8"
-##Fisier Log-uri creat de C
+##Fisier Log-uri
 LOG_FILE = "traffic.log"
 
 def run_cmd(cmd):
@@ -84,9 +84,9 @@ def qos_control():
     action = request.json.get('action')
     
     if action == 'limit':
-        # Resetăm eventualele configurări vechi de tc de pe interfața LAN (enp0s8)
+        # Resetare configurări vechi
         run_cmd("sudo tc qdisc del dev enp0s8 root 2>/dev/null")
-        # Inițializăm o disciplină de coadă de tip HTB (Hierarchical Token Bucket)
+        # Inițializăm coadă de tip HTB (Hierarchical Token Bucket)
         run_cmd("sudo tc qdisc add dev enp0s8 root handle 1: htb default 10")
         # Definim clasa principală limitată la o rată fixă de 5 Mbps
         run_cmd("sudo tc class add dev enp0s8 parent 1: classid 1:10 htb rate 5mbit ceil 5mbit")
