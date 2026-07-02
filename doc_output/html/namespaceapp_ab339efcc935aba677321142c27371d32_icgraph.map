@@ -1,6 +1,0 @@
-<map id="app.run_cmd" name="app.run_cmd">
-<area shape="rect" id="node1" title="Execută o comandă în terminalul Linux de pe Mașina Virtuală și returnează output&#45;ul standard." alt="" coords="205,56,312,83"/>
-<area shape="rect" id="node2" href="$namespaceapp.html#a203ec1128103dba0a003ab6b63108c1e" title="Gestionează politicile de securitate (Firewall) pentru blocarea sau deblocarea unui IP țintă." alt="" coords="6,5,157,32"/>
-<area shape="rect" id="node3" href="$namespaceapp.html#ab33079b4c0e16911914825b8dca88117" title="Activează sau dezactivează maparea statică de porturi (DNAT &#45; Port Forwarding)." alt="" coords="5,56,157,83"/>
-<area shape="rect" id="node4" href="$namespaceapp.html#a52d2e9348fc7b2bfd1db336f2066b54f" title="Controlează starea generală a rutării în sistem." alt="" coords="6,107,157,133"/>
-</map>

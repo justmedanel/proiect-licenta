@@ -1,4 +1,0 @@
-<map id="app.forward_control" name="app.forward_control">
-<area shape="rect" id="node1" title="Activează sau dezactivează maparea statică de porturi (DNAT &#45; Port Forwarding)." alt="" coords="5,5,157,32"/>
-<area shape="rect" id="node2" href="$namespaceapp.html#ab339efcc935aba677321142c27371d32" title="Execută o comandă în terminalul Linux de pe Mașina Virtuală și returnează output&#45;ul standard." alt="" coords="205,5,312,32"/>
-</map>
